@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="orb1" cx="80%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#5b4fe8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#5b4fe8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="15%" cy="80%" r="45%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb3" cx="55%" cy="55%" r="35%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a10"/>
+
+  <!-- Colour orbs -->
+  <rect width="1200" height="630" fill="url(#orb1)"/>
+  <rect width="1200" height="630" fill="url(#orb2)"/>
+  <rect width="1200" height="630" fill="url(#orb3)"/>
+
+  <!-- Subtle dot grid -->
+  <pattern id="dots" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#5b4fe8" opacity="0.18"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- Border frame -->
+  <rect x="1" y="1" width="1198" height="628" rx="0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+
+  <!-- Logo mark — purple rounded square -->
+  <rect x="80" y="80" width="80" height="80" rx="20" fill="#5b4fe8"/>
+  <!-- V path inside logo -->
+  <path d="M100 104 L120 148 L140 104" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- VORNEX wordmark -->
+  <text x="180" y="137" font-family="Arial Black, Arial, sans-serif" font-size="52" font-weight="900" fill="#f0f0f8" letter-spacing="-1">
+    <tspan fill="#5b4fe8">V</tspan><tspan fill="#f0f0f8" font-weight="300">ORNEX</tspan>
+  </text>
+
+  <!-- Divider line -->
+  <line x1="80" y1="210" x2="400" y2="210" stroke="#5b4fe8" stroke-width="2" opacity="0.4"/>
+
+  <!-- Main headline -->
+  <text x="80" y="300" font-family="Arial Black, Arial, sans-serif" font-size="72" font-weight="900" fill="#f0f0f8" letter-spacing="-2">London Web Design</text>
+  <text x="80" y="385" font-family="Arial Black, Arial, sans-serif" font-size="72" font-weight="900" letter-spacing="-2">
+    <tspan fill="#5b4fe8">for Small</tspan><tspan fill="#f0f0f8"> Businesses</tspan>
+  </text>
+
+  <!-- Subline -->
+  <text x="80" y="455" font-family="Arial, sans-serif" font-size="28" fill="#8888aa" font-weight="400">Fast, beautiful websites · Free mockup in 24 hours · From £60/mo</text>
+
+  <!-- Three stats on the right -->
+  <!-- Stat 1 -->
+  <rect x="720" y="260" width="140" height="100" rx="16" fill="rgba(91,79,232,0.1)" stroke="rgba(91,79,232,0.25)" stroke-width="1.5"/>
+  <text x="790" y="318" font-family="Arial Black, Arial, sans-serif" font-size="38" font-weight="900" fill="#5b4fe8" text-anchor="middle">3+</text>
+  <text x="790" y="345" font-family="Arial, sans-serif" font-size="13" fill="#8888aa" text-anchor="middle" letter-spacing="1.5" font-weight="600">SITES LIVE</text>
+
+  <!-- Stat 2 -->
+  <rect x="880" y="260" width="140" height="100" rx="16" fill="rgba(91,79,232,0.1)" stroke="rgba(91,79,232,0.25)" stroke-width="1.5"/>
+  <text x="950" y="318" font-family="Arial Black, Arial, sans-serif" font-size="38" font-weight="900" fill="#5b4fe8" text-anchor="middle">4.9★</text>
+  <text x="950" y="345" font-family="Arial, sans-serif" font-size="13" fill="#8888aa" text-anchor="middle" letter-spacing="1.5" font-weight="600">RATING</text>
+
+  <!-- Stat 3 -->
+  <rect x="1040" y="260" width="140" height="100" rx="16" fill="rgba(91,79,232,0.1)" stroke="rgba(91,79,232,0.25)" stroke-width="1.5"/>
+  <text x="1110" y="318" font-family="Arial Black, Arial, sans-serif" font-size="38" font-weight="900" fill="#5b4fe8" text-anchor="middle">£0</text>
+  <text x="1110" y="345" font-family="Arial, sans-serif" font-size="13" fill="#8888aa" text-anchor="middle" letter-spacing="1.5" font-weight="600">UPFRONT</text>
+
+  <!-- CTA badge bottom right -->
+  <rect x="720" y="480" width="460" height="60" rx="12" fill="#5b4fe8"/>
+  <text x="950" y="517" font-family="Arial Black, Arial, sans-serif" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="0.5">Get a free mockup → vornex.co.uk</text>
+
+  <!-- Website URL bottom left -->
+  <text x="80" y="565" font-family="Arial, sans-serif" font-size="22" fill="#5b4fe8" font-weight="600">hello@vornex.co.uk</text>
+  <text x="80" y="595" font-family="Arial, sans-serif" font-size="20" fill="#8888aa">07926 966 918</text>
+</svg>
