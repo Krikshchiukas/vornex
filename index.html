@@ -1783,13 +1783,69 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.metric-num[data-target]').forEach(el => metricObserver.observe(el));
 
-  // Contact form — Formspree AJAX submit
+  // Form validation helpers
+  function showError(input, msg) {
+    clearError(input);
+    input.style.borderColor = '#ef4444';
+    input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.15)';
+    const err = document.createElement('p');
+    err.className = 'field-error';
+    err.style.cssText = 'color:#ef4444;font-size:12px;margin-top:6px;';
+    err.textContent = msg;
+    input.parentNode.appendChild(err);
+  }
+  function clearError(input) {
+    input.style.borderColor = '';
+    input.style.boxShadow = '';
+    const old = input.parentNode.querySelector('.field-error');
+    if (old) old.remove();
+  }
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  // Clear error on input
+  document.querySelectorAll('#contact-form input, #contact-form textarea, #contact-form select').forEach(el => {
+    el.addEventListener('input', () => clearError(el));
+    el.addEventListener('change', () => clearError(el));
+  });
+
+  // Contact form — validate then Formspree AJAX submit
   document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
+
+    const fname    = this.querySelector('#fname');
+    const email    = this.querySelector('#email');
+    const biz      = this.querySelector('#biz');
+    const bizType  = this.querySelector('#biz-type');
+
+    let valid = true;
+
+    if (!fname.value.trim()) {
+      showError(fname, 'Please enter your name.'); valid = false;
+    }
+    if (!email.value.trim()) {
+      showError(email, 'Please enter your email address.'); valid = false;
+    } else if (!isValidEmail(email.value.trim())) {
+      showError(email, 'Please enter a valid email address.'); valid = false;
+    }
+    if (!biz.value.trim()) {
+      showError(biz, 'Please enter your business name.'); valid = false;
+    }
+    if (!bizType.value) {
+      showError(bizType, 'Please select your business type.'); valid = false;
+    }
+
+    if (!valid) {
+      // Scroll to first error
+      this.querySelector('.field-error').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
     const btn = this.querySelector('.form-submit');
-    const orig = btn.textContent;
     btn.textContent = 'Sending…';
     btn.disabled = true;
+
     try {
       const res = await fetch(this.action, {
         method: 'POST',
