@@ -527,6 +527,7 @@ function renderResults() {
         <input type="hidden" name="grade" id="gradeField" />
         <input class="input-field" id="nameInput" name="name" placeholder="Your name" required />
         <input class="input-field" id="bizInput" name="business" placeholder="Business name or website" required style="margin-top:10px;" />
+        <input class="input-field" type="email" id="emailInput" name="email" placeholder="Your email" required style="margin-top:10px;" />
         <button class="btn-primary" id="submitBtn" type="submit" style="width:100%;margin-top:14px;" disabled>Get a free review →</button>
       </form>
     </div>
@@ -541,14 +542,16 @@ function renderResults() {
   // Input validation
   const nameInput = document.getElementById('nameInput');
   const bizInput = document.getElementById('bizInput');
+  const emailInput = document.getElementById('emailInput');
   const submitBtn = document.getElementById('submitBtn');
   const auditForm = document.getElementById('auditForm');
 
   function checkInputs() {
-    submitBtn.disabled = !(nameInput.value.trim() && bizInput.value.trim());
+    submitBtn.disabled = !(nameInput.value.trim() && bizInput.value.trim() && emailInput.value.trim());
   }
   nameInput.addEventListener('input', checkInputs);
   bizInput.addEventListener('input', checkInputs);
+  emailInput.addEventListener('input', checkInputs);
 
   auditForm.addEventListener('submit', async (e) => {
     e.preventDefault();
