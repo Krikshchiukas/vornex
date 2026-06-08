@@ -328,10 +328,15 @@
   .logo-wordmark {
     font-family: var(--font-display);
     font-size: 20px;
+    font-weight: 800;
     letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 50%, #74b9ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .logo-wordmark .v { font-weight: 800; color: var(--purple); }
-  .logo-wordmark .ornex { font-weight: 300; color: var(--text); margin-left: 2px; }
+  .logo-wordmark .v { font-weight: 800; }
+  .logo-wordmark .ornex { font-weight: 800; margin-left: 0; }
 
   .nav-links {
     display: flex; align-items: center; gap: 32px;
