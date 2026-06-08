@@ -387,7 +387,10 @@ const card = document.getElementById('card');
 
 function render() {
   card.innerHTML = '';
-  card.className = 'card fade-in';
+  card.className = 'card';
+  // Force reflow to restart animation
+  void card.offsetWidth;
+  card.classList.add('fade-in');
 
   if (step === 0) renderIntro();
   else if (step <= questions.length) renderQuestion();
@@ -465,8 +468,8 @@ function renderResults() {
   const feedback = getFeedback(answers);
 
   const radius = 50;
-  const circ = 2 * Math.PI * radius;
-  const dash = (pct / 100) * circ;
+  const circ = Math.round(2 * Math.PI * radius * 100) / 100;
+  const dash = Math.round((pct / 100) * circ * 100) / 100;
 
   const issuesHtml = feedback.length > 0 ? `
     <div class="issues-label">What to fix</div>
