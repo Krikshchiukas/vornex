@@ -522,11 +522,9 @@ function renderResults() {
     <div class="cta-box" id="ctaBox">
       <div class="cta-title">Want this fixed?</div>
       <p class="cta-sub">We build fast, modern websites for London businesses. Drop your details and we'll review your site for free — no obligation.</p>
-      <form name="audit-leads" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="auditForm">
-        <input type="hidden" name="form-name" value="audit-leads" />
+      <form id="auditForm">
         <input type="hidden" name="score" id="scoreField" />
         <input type="hidden" name="grade" id="gradeField" />
-        <p style="display:none"><input name="bot-field" /></p>
         <input class="input-field" id="nameInput" name="name" placeholder="Your name" required />
         <input class="input-field" id="bizInput" name="business" placeholder="Business name or website" required style="margin-top:10px;" />
         <button class="btn-primary" id="submitBtn" type="submit" style="width:100%;margin-top:14px;" disabled>Get a free review →</button>
@@ -563,7 +561,11 @@ function renderResults() {
 
     try {
       const formData = new FormData(auditForm);
-      await fetch('/', { method: 'POST', body: formData });
+      await fetch('https://formspree.io/f/mrevenza', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      });
 
       document.getElementById('ctaBox').outerHTML = `
         <div class="success-box">
