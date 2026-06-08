@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Website Audit | Vornex Web Design London</title>
+<meta name="description" content="Find out in 2 minutes how much your website is costing your business. Free instant audit from Vornex Web Design London.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vornex.co.uk/audit">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235b4fe8'/%3E%3Cpath d='M8 8L16 24L24 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a10;
+    --bg2: #0f0f18;
+    --bg3: #13131f;
+    --text: #f0f0f8;
+    --muted: #8888aa;
+    --border: rgba(255,255,255,0.07);
+    --purple: #5b4fe8;
+    --purple-hover: #7060f0;
+    --purple-glow: rgba(91,79,232,0.35);
+    --teal: #06b6d4;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  /* Animated blobs */
+  .blob {
+    position: fixed; border-radius: 50%;
+    pointer-events: none; z-index: 0;
+    filter: blur(80px);
+  }
+  .blob-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(91,79,232,0.15) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    animation: bd1 18s ease-in-out infinite;
+  }
+  .blob-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(6,182,212,0.10) 0%, transparent 70%);
+    bottom: -80px; left: -80px;
+    animation: bd2 22s ease-in-out infinite;
+  }
+  @keyframes bd1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,40px)} }
+  @keyframes bd2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-40px)} }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 64px;
+    background: rgba(10,10,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 32px; height: 32px;
+    background: var(--purple); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-mark svg { width: 18px; height: 18px; }
+  .nav-wordmark {
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 800;
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 50%, #74b9ff 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .nav-back {
+    color: var(--muted); font-size: 13px; text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--text); }
+
+  /* Card */
+  .card {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 540px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 36px;
+    margin-top: 64px;
+  }
+
+  /* Step label */
+  .step-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    display: flex; gap: 4px; margin-bottom: 32px;
+  }
+  .progress-seg {
+    height: 3px; flex: 1; border-radius: 2px;
+    background: var(--border);
+    transition: background 0.3s;
+  }
+  .progress-seg.done { background: var(--purple); }
+
+  /* Intro */
+  .intro-badge {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: var(--muted); margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .intro-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 5vw, 36px);
+    font-weight: 800; line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .intro-title span {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .intro-sub {
+    font-size: 14px; color: var(--muted);
+    line-height: 1.7; margin-bottom: 32px;
+  }
+
+  /* Question */
+  .question-title {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 700;
+    line-height: 1.3; margin-bottom: 24px;
+  }
+  .options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+  .opt-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 14px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 14px;
+    transition: all 0.15s ease;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .opt-btn:hover { border-color: rgba(91,79,232,0.5); color: var(--text); background: rgba(91,79,232,0.05); }
+  .opt-btn.active { border-color: var(--purple); color: var(--text); background: rgba(91,79,232,0.1); }
+  .opt-diamond { color: var(--border); font-size: 10px; flex-shrink: 0; transition: color 0.15s; }
+  .opt-btn.active .opt-diamond { color: var(--purple); }
+  .opt-btn:hover .opt-diamond { color: rgba(91,79,232,0.6); }
+
+  /* Buttons */
+  .btn-row { display: flex; gap: 10px; }
+  .btn-primary {
+    background: var(--purple); color: #fff;
+    border: none; padding: 14px 28px;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px var(--purple-glow);
+  }
+  .btn-primary:hover { background: var(--purple-hover); transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted); padding: 14px 20px;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 14px; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.15); color: var(--text); }
+
+  /* Results */
+  .score-ring-wrap {
+    display: flex; align-items: center; gap: 24px; margin-bottom: 28px;
+  }
+  .score-ring { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
+  .score-ring svg { transform: rotate(-90deg); }
+  .score-center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .score-num {
+    font-family: var(--font-display);
+    font-size: 30px; font-weight: 800; line-height: 1;
+  }
+  .score-denom { font-size: 11px; color: var(--muted); }
+  .grade-label {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 800; margin-bottom: 6px;
+  }
+  .grade-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .issues-label {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .issues { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .issue-card {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--purple);
+    padding: 14px 16px;
+    border-radius: 0 10px 10px 0;
+    background: var(--bg3);
+  }
+  .issue-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .issue-fix { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* CTA box */
+  .cta-box {
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+    background: var(--bg3); margin-bottom: 20px;
+  }
+  .cta-title {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 700; margin-bottom: 8px;
+  }
+  .cta-sub { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 18px; }
+  .input-field {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px 16px; border-radius: 8px;
+    font-family: var(--font-body); font-size: 14px;
+    width: 100%; outline: none;
+    transition: border-color 0.2s; margin-bottom: 10px;
+  }
+  .input-field:focus { border-color: var(--purple); }
+  .input-field::placeholder { color: var(--muted); }
+
+  .success-box {
+    border: 1px solid rgba(91,79,232,0.3);
+    border-radius: 12px; padding: 28px;
+    background: rgba(91,79,232,0.05);
+    text-align: center; margin-bottom: 20px;
+  }
+  .success-icon { font-size: 28px; margin-bottom: 12px; }
+  .success-title {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 700;
+    color: #a29bfe; margin-bottom: 8px;
+  }
+  .success-sub { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .footer-link {
+    text-align: center; margin-top: 4px;
+  }
+  .footer-link a {
+    font-size: 11px; color: var(--border);
+    text-decoration: none; letter-spacing: 0.1em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .footer-link a:hover { color: var(--muted); }
+
+  /* Fade animation */
+  .fade-in { animation: fadeUp 0.3s ease forwards; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 560px) {
+    .card { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 18 18" fill="none"><path d="M3 3L9 15L15 3" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <span class="nav-wordmark">Vornex</span>
+  </a>
+  <a href="/" class="nav-back">← Back to site</a>
+</nav>
+
+<div class="card" id="card">
+  <!-- Content injected by JS -->
+</div>
+
+<script>
+const questions = [
+  {
+    id: "has_website",
+    text: "Does your business have a website?",
+    options: ["Yes", "No, just social media", "Under construction"],
+    scores: { "Yes": 10, "No, just social media": 0, "Under construction": 3 }
+  },
+  {
+    id: "mobile",
+    text: "How does your site look on a phone?",
+    options: ["Looks great", "Bit cramped", "Broken / hard to use", "Not sure"],
+    scores: { "Looks great": 15, "Bit cramped": 7, "Broken / hard to use": 0, "Not sure": 3 }
+  },
+  {
+    id: "speed",
+    text: "How fast does your site load?",
+    options: ["Under 2 seconds", "3–5 seconds", "Very slow", "No idea"],
+    scores: { "Under 2 seconds": 15, "3–5 seconds": 8, "Very slow": 0, "No idea": 3 }
+  },
+  {
+    id: "booking",
+    text: "Can customers book or contact you online?",
+    options: ["Yes, directly on the site", "Just a phone number / email", "No", "Not relevant"],
+    scores: { "Yes, directly on the site": 15, "Just a phone number / email": 7, "No": 0, "Not relevant": 10 }
+  },
+  {
+    id: "google",
+    text: "Can people find you on Google?",
+    options: ["Yes, I show up easily", "Sometimes", "Rarely / never", "Not sure"],
+    scores: { "Yes, I show up easily": 15, "Sometimes": 8, "Rarely / never": 0, "Not sure": 3 }
+  },
+  {
+    id: "design",
+    text: "When did you last update your website design?",
+    options: ["Within the last year", "1–3 years ago", "3+ years ago", "Never been updated"],
+    scores: { "Within the last year": 15, "1–3 years ago": 8, "3+ years ago": 2, "Never been updated": 0 }
+  },
+  {
+    id: "trust",
+    text: "Does your site show reviews, photos or social proof?",
+    options: ["Yes, plenty", "A few", "None", "Not sure"],
+    scores: { "Yes, plenty": 15, "A few": 8, "None": 0, "Not sure": 3 }
+  }
+];
+
+const maxScore = questions.reduce((acc, q) => acc + Math.max(...Object.values(q.scores)), 0);
+
+function getGrade(pct) {
+  if (pct >= 80) return { label: "Strong", color: "#4ade80", desc: "Your site is working well. A few tweaks could make it exceptional." };
+  if (pct >= 55) return { label: "Needs Work", color: "#a29bfe", desc: "You're losing customers to competitors with better sites. Fixable." };
+  return { label: "Critical", color: "#f87171", desc: "Your site is actively hurting your business. Every day costs you money." };
+}
+
+function getFeedback(answers) {
+  const items = [];
+  if (answers.has_website !== "Yes") items.push({ issue: "No proper website", fix: "A professional site builds instant trust and works 24/7 for you." });
+  if (answers.mobile === "Broken / hard to use" || answers.mobile === "Bit cramped") items.push({ issue: "Poor mobile experience", fix: "60–80% of local searches happen on phones. A bad mobile site loses most visitors." });
+  if (answers.speed === "Very slow" || answers.speed === "3–5 seconds") items.push({ issue: "Slow loading speed", fix: "Each extra second costs ~7% of visitors. Speed is a ranking factor too." });
+  if (answers.booking === "No" || answers.booking === "Just a phone number / email") items.push({ issue: "No online booking or contact form", fix: "Customers book at 11pm. If you're not there, a competitor is." });
+  if (answers.google === "Rarely / never" || answers.google === "Sometimes") items.push({ issue: "Low Google visibility", fix: "Most customers never scroll past page one. You're invisible to them." });
+  if (answers.design === "3+ years ago" || answers.design === "Never been updated") items.push({ issue: "Outdated design", fix: "An old-looking site signals an old-looking business. First impressions are instant." });
+  if (answers.trust === "None" || answers.trust === "A few") items.push({ issue: "Missing social proof", fix: "Reviews and photos are the #1 trust signal for local businesses." });
+  return items;
+}
+
+// State
+let step = 0; // 0=intro, 1-7=questions, 8=results
+let answers = {};
+let selected = null;
+
+const card = document.getElementById('card');
+
+function render() {
+  card.innerHTML = '';
+  card.className = 'card fade-in';
+
+  if (step === 0) renderIntro();
+  else if (step <= questions.length) renderQuestion();
+  else renderResults();
+}
+
+function renderIntro() {
+  card.innerHTML = `
+    <div class="intro-badge">Free · 2 minutes</div>
+    <h1 class="intro-title">How much is your website<br><span>costing you?</span></h1>
+    <p class="intro-sub">7 questions. Instant results. Find out exactly what's holding your business back online — and what to do about it.</p>
+    <button class="btn-primary" id="startBtn">Start the audit →</button>
+  `;
+  document.getElementById('startBtn').addEventListener('click', () => { step = 1; render(); });
+}
+
+function renderQuestion() {
+  const q = questions[step - 1];
+  const progressSegs = questions.map((_, i) =>
+    `<div class="progress-seg ${i < step ? 'done' : ''}"></div>`
+  ).join('');
+
+  const optionsHtml = q.options.map(opt => `
+    <button class="opt-btn ${selected === opt ? 'active' : ''}" data-opt="${opt}">
+      <span class="opt-diamond">◆</span>${opt}
+    </button>
+  `).join('');
+
+  card.innerHTML = `
+    <div class="progress-bar">${progressSegs}</div>
+    <div class="step-label">${step} / ${questions.length}</div>
+    <h2 class="question-title">${q.text}</h2>
+    <div class="options">${optionsHtml}</div>
+    <div class="btn-row">
+      ${step > 1 ? '<button class="btn-ghost" id="backBtn">← Back</button>' : ''}
+      <button class="btn-primary" id="nextBtn" ${!selected ? 'disabled' : ''}>
+        ${step === questions.length ? 'See my results →' : 'Next →'}
+      </button>
+    </div>
+  `;
+
+  card.querySelectorAll('.opt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selected = btn.dataset.opt;
+      render();
+    });
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    if (!selected) return;
+    answers[q.id] = selected;
+    selected = answers[questions[step]?.id] || null;
+    step++;
+    render();
+  });
+
+  if (step > 1) {
+    document.getElementById('backBtn').addEventListener('click', () => {
+      delete answers[q.id];
+      step--;
+      selected = answers[questions[step - 1]?.id] || null;
+      render();
+    });
+  }
+}
+
+function renderResults() {
+  const score = Object.entries(answers).reduce((acc, [id, val]) => {
+    const q = questions.find(q => q.id === id);
+    return acc + (q?.scores[val] ?? 0);
+  }, 0);
+
+  const pct = Math.round((score / maxScore) * 100);
+  const grade = getGrade(pct);
+  const feedback = getFeedback(answers);
+
+  const radius = 50;
+  const circ = 2 * Math.PI * radius;
+  const dash = (pct / 100) * circ;
+
+  const issuesHtml = feedback.length > 0 ? `
+    <div class="issues-label">What to fix</div>
+    <div class="issues">
+      ${feedback.map(f => `
+        <div class="issue-card">
+          <div class="issue-title">${f.issue}</div>
+          <div class="issue-fix">${f.fix}</div>
+        </div>
+      `).join('')}
+    </div>
+  ` : `<p style="color:var(--muted);font-size:14px;margin-bottom:28px;">Your site is in good shape. We can help take it to the next level.</p>`;
+
+  card.innerHTML = `
+    <div class="step-label">Your results</div>
+    <div class="score-ring-wrap">
+      <div class="score-ring">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="${radius}" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
+          <circle cx="60" cy="60" r="${radius}" fill="none" stroke="${grade.color}"
+            stroke-width="8" stroke-linecap="round"
+            stroke-dasharray="${dash} ${circ}"
+            style="transition: stroke-dasharray 1s ease"/>
+        </svg>
+        <div class="score-center">
+          <span class="score-num" style="color:${grade.color}">${pct}</span>
+          <span class="score-denom">/ 100</span>
+        </div>
+      </div>
+      <div>
+        <div class="grade-label" style="color:${grade.color}">${grade.label}</div>
+        <p class="grade-desc">${grade.desc}</p>
+      </div>
+    </div>
+
+    ${issuesHtml}
+
+    <div class="cta-box" id="ctaBox">
+      <div class="cta-title">Want this fixed?</div>
+      <p class="cta-sub">We build fast, modern websites for London businesses. Drop your details and we'll review your site for free — no obligation.</p>
+      <input class="input-field" id="nameInput" placeholder="Your name" />
+      <input class="input-field" id="bizInput" placeholder="Business name or website" />
+      <button class="btn-primary" id="submitBtn" style="width:100%" disabled>Get a free review →</button>
+    </div>
+
+    <div class="footer-link"><a href="https://vornex.co.uk">vornex.co.uk</a></div>
+  `;
+
+  // Input validation
+  const nameInput = document.getElementById('nameInput');
+  const bizInput = document.getElementById('bizInput');
+  const submitBtn = document.getElementById('submitBtn');
+
+  function checkInputs() {
+    submitBtn.disabled = !(nameInput.value.trim() && bizInput.value.trim());
+  }
+  nameInput.addEventListener('input', checkInputs);
+  bizInput.addEventListener('input', checkInputs);
+
+  submitBtn.addEventListener('click', () => {
+    const name = nameInput.value.trim();
+    const biz = bizInput.value.trim();
+    if (!name || !biz) return;
+
+    document.getElementById('ctaBox').outerHTML = `
+      <div class="success-box">
+        <div class="success-icon">✦</div>
+        <div class="success-title">Got it, ${name}.</div>
+        <p class="success-sub">I'll review ${biz} and get back to you within 24 hours with specific recommendations.</p>
+      </div>
+    `;
+  });
+}
+
+render();
+</script>
+
+</body>
+</html>
