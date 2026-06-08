@@ -1366,6 +1366,28 @@
     line-height: 1.7;
   }
 
+  /* ─── WHATSAPP FLOAT ─── */
+  .wa-float {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    z-index: 999;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: waPop 0.5s cubic-bezier(0.16,1,0.3,1) 2s both;
+  }
+  .wa-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+  }
+  .wa-float svg { width: 56px; height: 56px; }
+  @keyframes waPop {
+    from { opacity: 0; transform: scale(0.5); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
   /* ─── FOOTER ─── */
   footer {
     border-top: 1px solid var(--border);
@@ -2041,6 +2063,14 @@
     </div>
   </div>
 </section>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/447926966918?text=Hi%20Vornex%2C%20I%27d%20like%20to%20find%20out%20more%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="16" fill="#25D366"/>
+    <path d="M22.5 9.5A9.1 9.1 0 0 0 16 7a9 9 0 0 0-7.8 13.5L7 25l4.6-1.2A9 9 0 0 0 25 16a9.1 9.1 0 0 0-2.5-6.5zm-6.5 13.8a7.5 7.5 0 0 1-3.8-1l-.3-.2-2.7.7.7-2.6-.2-.3a7.5 7.5 0 1 1 6.3 3.4zm4.1-5.6c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1l-.6.8c-.1.1-.2.1-.4 0a5.5 5.5 0 0 1-1.6-1 6 6 0 0 1-1.1-1.4c-.1-.2 0-.3.1-.4l.3-.4.2-.4v-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.4c-.2 0-.4.1-.6.3a2.6 2.6 0 0 0-.8 2c0 1.1.8 2.2.9 2.4.1.1 1.6 2.5 3.9 3.4.5.2 1 .4 1.3.5.6.2 1.1.1 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z" fill="white"/>
+  </svg>
+</a>
 
 <!-- FOOTER -->
 <footer>
