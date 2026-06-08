@@ -1176,6 +1176,67 @@
   }
   .form-success p { color: var(--muted); }
 
+  /* ─── FAQ ─── */
+  .s-faq {
+    padding: 100px 24px;
+    position: relative; z-index: 1;
+  }
+  .faq-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .faq-list {
+    margin-top: 0;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 500;
+    text-align: left;
+    padding: 22px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--purple); }
+  .faq-icon {
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--purple);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .faq-q[aria-expanded="true"] .faq-icon {
+    transform: rotate(45deg);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+  }
+  .faq-a.open {
+    max-height: 300px;
+    padding-bottom: 20px;
+  }
+  .faq-a p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
   /* ─── FOOTER ─── */
   footer {
     border-top: 1px solid var(--border);
@@ -1611,6 +1672,98 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="s-faq" id="faq">
+  <div class="faq-inner">
+    <div class="section-eyebrow rv" style="text-align:center;">FAQ</div>
+    <h2 class="section-title rv" style="text-align:center;">Questions & Answers</h2>
+    <p class="section-sub rv" style="text-align:center;max-width:520px;margin:0 auto 48px;">Everything you need to know before getting started.</p>
+    <div class="faq-list">
+
+      <div class="faq-item rv">
+        <button class="faq-q" aria-expanded="false">
+          How much does a website cost?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Sites start from £399. You see the full design before paying anything — the mockup is completely free, no commitment required.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv">
+        <button class="faq-q" aria-expanded="false">
+          How long does it take?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>You get your free mockup within 24 hours. The full site goes live in 3–5 working days once you approve the design and send your content.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv">
+        <button class="faq-q" aria-expanded="false">
+          What do I need to provide?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Just your logo (if you have one), a few photos, and a description of your services. No logo? We'll sort it. No photos? We'll use professional stock images that match your brand.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv">
+        <button class="faq-q" aria-expanded="false">
+          Will it work on mobile?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Every site we build is mobile-first — it looks great on phones, tablets and desktops. Google also ranks mobile-friendly sites higher in search results.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv">
+        <button class="faq-q" aria-expanded="false">
+          What happens after the site goes live?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>We offer a monthly retainer from £60/mo covering hosting, security updates and minor edits. You won't need to touch anything — we handle it all.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv">
+        <button class="faq-q" aria-expanded="false">
+          Do you set up Google too?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes. Every site includes Google Business Profile setup so your business appears on Google Maps and local search — not just on the web.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv">
+        <button class="faq-q" aria-expanded="false">
+          I'm not tech-savvy — is that a problem?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Not at all. We handle everything end to end. You approve the design, send us your content, and we take care of the rest.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv">
+        <button class="faq-q" aria-expanded="false">
+          Do you only work in London?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>We specialise in London businesses but work with UK clients nationwide. If you're outside London, get in touch — we can still help.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="s-contact" id="contact">
   <div class="contact-inner">
@@ -1863,6 +2016,24 @@
       btn.textContent = '⚠ Try again';
       btn.disabled = false;
     }
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      // Close all
+      document.querySelectorAll('.faq-q').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.remove('open');
+      });
+      // Open clicked if it was closed
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.classList.add('open');
+      }
+    });
   });
 </script>
 
