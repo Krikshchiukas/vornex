@@ -295,6 +295,18 @@
 </head>
 <body>
 
+<!-- Hidden static form so Netlify detects it at deploy time. Actual submissions use JS fetch below. -->
+<form name="audit-leads" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="audit-leads">
+  <input type="text" name="bot-field">
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="text" name="business">
+  <input type="tel" name="phone">
+  <input type="hidden" name="score">
+  <input type="hidden" name="grade">
+</form>
+
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 
