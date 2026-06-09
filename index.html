@@ -1474,8 +1474,39 @@
     .work-grid { grid-template-columns: 1fr; }
   }
 </style>
+
+<!-- ══════════════════════════════════════════════
+     GOOGLE ANALYTICS 4
+═══════════════════════════════════════════════ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YX1DC8S4WP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YX1DC8S4WP');
+</script>
+
+<!-- Skip nav for accessibility -->
+<style>
+  .skip-nav {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: #5b4fe8;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-nav:focus { top: 16px; }
+</style>
 </head>
 <body>
+<a class="skip-nav" href="#main-content">Skip to main content</a>
 
 <div id="cursor-glow"></div>
 
@@ -1512,7 +1543,7 @@
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="/get-started" class="nav-cta">Free mockup</a>
+  <a href="/get-started" class="nav-cta" onclick="gtag('event','cta_click',{event_category:'nav',event_label:'free_mockup'})">Free mockup</a>
 
   <button class="burger" id="burger" aria-label="Open navigation menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -1526,11 +1557,11 @@
   <a href="#process" class="m-link">Process</a>
   <a href="#pricing" class="m-link">Pricing</a>
   <a href="#contact" class="m-link">Contact</a>
-  <a href="/get-started" class="m-cta">Free mockup →</a>
+  <a href="/get-started" class="m-cta" onclick="gtag('event','cta_click',{event_category:'mobile_nav',event_label:'free_mockup'})">Free mockup →</a>
 </div>
 
 <!-- HERO -->
-<section class="s-hero" id="home">
+<section class="s-hero" id="main-content">
   <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
   <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
   <div class="hero-blob hero-blob-3" aria-hidden="true"></div>
@@ -1541,8 +1572,8 @@
       <h1>Websites that<br>get London<br><em>businesses found.</em></h1>
       <p class="hero-sub">Affordable web design for London small businesses — restaurants, salons, barbers, gyms &amp; trades. Fast, mobile-first &amp; built for Google. <strong style="color:var(--text);font-weight:600;">Free mockup in 24 hours.</strong></p>
       <div class="hero-actions">
-        <a href="/get-started" class="btn-primary">Get a free mockup →</a>
-        <a href="/audit.html" class="btn-secondary">🔍 Free site audit</a>
+        <a href="/get-started" class="btn-primary" onclick="gtag('event','cta_click',{event_category:'hero',event_label:'get_free_mockup'})">Get a free mockup →</a>
+        <a href="/audit.html" class="btn-secondary" onclick="gtag('event','cta_click',{event_category:'hero',event_label:'free_site_audit'})">🔍 Free site audit</a>
       </div>
     </div>
 
@@ -2269,6 +2300,7 @@
       if (res.ok) {
         this.style.display = 'none';
         document.getElementById('form-success').classList.add('show');
+        gtag('event', 'generate_lead', { event_category: 'contact_form', event_label: 'mockup_request' });
         // Also save to Google Sheet (fire-and-forget — don't block on this)
         if (SHEET_URL !== 'YOUR_APPS_SCRIPT_WEB_APP_URL') {
           fetch(SHEET_URL, {
