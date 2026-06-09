@@ -710,8 +710,8 @@ label {
 </div>
 
 <script>
-// ── Apps Script web app URL — replace after redeploying with "Anyone" access ──
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw4_GYyo7tOaIS06Bwp8ia0PHPKx4_0SW_RNPHAjGJbRKbLc41YCrGg3cOy99zVK3i2/exec';
+const FORMSPREE_URL = 'https://formspree.io/f/mrevenza';
 
 let selectedStyle  = '';
 let selectedBudget = '';
@@ -799,23 +799,27 @@ async function submitForm() {
     source:          'get-started-page'
   };
 
+  function showSuccess() {
+    document.getElementById('form-header').style.display = 'none';
+    document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
+    document.getElementById('success-wrap').classList.add('visible');
+  }
+
   try {
-    if (SHEET_URL !== 'YOUR_APPS_SCRIPT_WEB_APP_URL') {
-      await fetch(SHEET_URL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
-    // Show success regardless (don't block on sheet save)
-    document.getElementById('form-header').style.display = 'none';
-    document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
-    document.getElementById('success-wrap').classList.add('visible');
+    // Build FormData for Formspree (sends you an email notification)
+    const fd = new FormData();
+    fd.append('_subject', 'New intake — ' + data.businessName + ' (' + data.businessType + ')');
+    Object.entries(data).forEach(([k, v]) => fd.append(k, v));
+
+    // Fire both in parallel — Formspree for email, Sheet for CRM
+    await Promise.allSettled([
+      fetch(FORMSPREE_URL, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } }),
+      fetch(SHEET_URL, { method: 'POST', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json' } })
+    ]);
+
+    showSuccess();
   } catch {
-    // Still show success — data can be recovered from Formspree email
-    document.getElementById('form-header').style.display = 'none';
-    document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
-    document.getElementById('success-wrap').classList.add('visible');
+    showSuccess();
   }
 }
 </script>
