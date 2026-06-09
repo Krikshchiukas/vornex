@@ -1503,7 +1503,7 @@
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Free mockup</a>
+  <a href="/get-started" class="nav-cta">Free mockup</a>
 
   <button class="burger" id="burger" aria-label="Open navigation menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -1517,7 +1517,7 @@
   <a href="#process" class="m-link">Process</a>
   <a href="#pricing" class="m-link">Pricing</a>
   <a href="#contact" class="m-link">Contact</a>
-  <a href="#contact" class="m-cta">Free mockup →</a>
+  <a href="/get-started" class="m-cta">Free mockup →</a>
 </div>
 
 <!-- HERO -->
@@ -1532,7 +1532,7 @@
       <h1>Websites that<br>get London<br><em>businesses found.</em></h1>
       <p class="hero-sub">Affordable web design for London small businesses — restaurants, salons, barbers, gyms &amp; trades. Fast, mobile-first &amp; built for Google. <strong style="color:var(--text);font-weight:600;">Free mockup in 24 hours.</strong></p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get a free mockup →</a>
+        <a href="/get-started" class="btn-primary">Get a free mockup →</a>
         <a href="/audit.html" class="btn-secondary">🔍 Free site audit</a>
       </div>
     </div>
@@ -2248,6 +2248,9 @@
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
+    // Apps Script web app URL — update after redeploying with "Anyone" access
+    const SHEET_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL';
+
     try {
       const res = await fetch(this.action, {
         method: 'POST',
@@ -2257,6 +2260,22 @@
       if (res.ok) {
         this.style.display = 'none';
         document.getElementById('form-success').classList.add('show');
+        // Also save to Google Sheet (fire-and-forget — don't block on this)
+        if (SHEET_URL !== 'YOUR_APPS_SCRIPT_WEB_APP_URL') {
+          fetch(SHEET_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+              clientName:   this.querySelector('#fname').value.trim(),
+              clientEmail:  this.querySelector('#email').value.trim(),
+              clientPhone:  this.querySelector('#phone').value.trim(),
+              businessName: this.querySelector('#biz').value.trim(),
+              businessType: this.querySelector('#biz-type').value,
+              keyServices:  this.querySelector('#message').value.trim(),
+              source: 'contact-form'
+            }),
+            headers: { 'Content-Type': 'application/json' }
+          }).catch(() => {});
+        }
       } else {
         btn.textContent = '⚠ Try again';
         btn.disabled = false;

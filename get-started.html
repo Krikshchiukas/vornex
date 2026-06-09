@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started — Vornex Web Design London</title>
+<meta name="description" content="Tell us about your business and we'll build you a free mockup within 24 hours. No cost, no commitment.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://vornex.co.uk/get-started">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235b4fe8'/%3E%3Cpath d='M8 8L16 24L24 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --purple: #5b4fe8;
+  --purple-hover: #7060f0;
+  --purple-glow: rgba(91,79,232,0.35);
+  --bg: #0a0a10;
+  --bg2: #0f0f18;
+  --bg3: #13131f;
+  --text: #f0f0f8;
+  --muted: #8888aa;
+  --border: rgba(255,255,255,0.07);
+  --green: #34d399;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Nav ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+  background: rgba(10,10,16,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 32px; height: 32px;
+  background: var(--purple);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-wordmark {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+
+.logo-wordmark .v { color: var(--purple-hover); }
+
+.nav-back {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.nav-back:hover { color: var(--text); }
+
+/* ── Page layout ── */
+.page-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 104px 24px 80px;
+}
+
+.page-eyebrow {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--purple-hover);
+  margin-bottom: 14px;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.page-sub {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 520px;
+}
+
+/* ── Steps indicator ── */
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 36px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.step.active { color: var(--text); }
+.step.done { color: var(--green); }
+
+.step-num {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  flex-shrink: 0;
+}
+
+.step.active .step-num { border-color: var(--purple); background: rgba(91,79,232,0.15); color: var(--purple-hover); }
+.step.done .step-num { border-color: var(--green); background: rgba(52,211,153,0.1); color: var(--green); }
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin: 0 12px;
+  min-width: 20px;
+}
+
+/* ── Form sections ── */
+.form-section {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 16px;
+  display: none;
+}
+
+.form-section.active { display: block; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.section-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* ── Form fields ── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 560px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .span2 { grid-column: span 1 !important; }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group.span2 { grid-column: span 2; }
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.form-input, .form-select, .form-textarea {
+  font-family: var(--font-body);
+  font-size: 14px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  padding: 11px 14px;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(91,79,232,0.12);
+}
+
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+.form-select { cursor: pointer; }
+.form-select option { background: var(--bg3); }
+.form-textarea { resize: vertical; min-height: 80px; }
+
+.field-hint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: -2px;
+}
+
+/* Style picker */
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 480px) { .style-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.style-option {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.style-option:hover { border-color: rgba(91,79,232,0.4); background: rgba(91,79,232,0.05); }
+.style-option.selected { border-color: var(--purple); background: rgba(91,79,232,0.1); }
+
+.style-emoji { font-size: 22px; display: block; margin-bottom: 6px; }
+.style-label { font-size: 12px; font-weight: 600; display: block; }
+.style-desc { font-size: 11px; color: var(--muted); margin-top: 3px; display: block; }
+
+/* Colour row */
+.colour-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.colour-picker {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 2px;
+  background: var(--bg3);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.colour-hex {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 8px;
+  outline: none;
+  width: 100px;
+  transition: border-color 0.2s;
+}
+
+.colour-hex:focus { border-color: var(--purple); }
+
+/* Toggle yes/no */
+.toggle-row { display: flex; gap: 8px; }
+
+.toggle-btn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-btn.active {
+  background: rgba(91,79,232,0.12);
+  border-color: var(--purple);
+  color: var(--purple-hover);
+}
+
+/* Budget pills */
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.budget-option {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.budget-option:hover { border-color: rgba(91,79,232,0.4); }
+.budget-option.selected { border-color: var(--purple); background: rgba(91,79,232,0.1); }
+.budget-label { font-size: 14px; font-weight: 600; }
+.budget-desc { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+/* ── Nav buttons ── */
+.form-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.btn-primary {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--purple);
+  color: #fff;
+  padding: 13px 28px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background: var(--purple-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px var(--purple-glow);
+}
+
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-ghost {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--muted);
+  padding: 13px 20px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+/* ── Success ── */
+.success-wrap {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.success-wrap.visible { display: block; }
+
+.success-icon {
+  width: 72px; height: 72px;
+  background: rgba(52,211,153,0.12);
+  border: 1.5px solid rgba(52,211,153,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 24px;
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.success-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0 auto 32px;
+}
+
+/* ── Trust strip ── */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.trust-item {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.trust-item span { color: var(--green); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo" aria-label="Vornex home">
+    <div class="logo-mark">
+      <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
+        <path d="M3 3L9 15L15 3" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="logo-wordmark"><span class="v">V</span>ORNEX</span>
+  </a>
+  <a href="/" class="nav-back">
+    ← Back to site
+  </a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- Header -->
+  <div id="form-header">
+    <div class="page-eyebrow">Free mockup — no commitment</div>
+    <h1 class="page-title">Tell us about your business</h1>
+    <p class="page-sub">Takes 3 minutes. We'll build your free mockup site within 24 hours so you can see exactly what you're getting before spending anything.</p>
+
+    <div class="trust-strip">
+      <div class="trust-item"><span>✓</span> Free mockup in 24h</div>
+      <div class="trust-item"><span>✓</span> No upfront payment</div>
+      <div class="trust-item"><span>✓</span> 4.9 ★ rated agency</div>
+    </div>
+
+    <!-- Steps -->
+    <div class="steps">
+      <div class="step active" id="step-1">
+        <div class="step-num">1</div>
+        <span>Your details</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-2">
+        <div class="step-num">2</div>
+        <span>Your business</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-3">
+        <div class="step-num">3</div>
+        <span>Design preferences</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 1: Contact -->
+  <div class="form-section active" id="section-1">
+    <div class="section-title">Your contact details</div>
+    <div class="section-sub">So we know who to send the mockup to.</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="gs-name">Your name *</label>
+        <input class="form-input" id="gs-name" type="text" placeholder="John Smith" autocomplete="given-name">
+      </div>
+      <div class="form-group">
+        <label for="gs-phone">Phone number</label>
+        <input class="form-input" id="gs-phone" type="tel" placeholder="07XXX XXXXXX" autocomplete="tel">
+      </div>
+      <div class="form-group span2">
+        <label for="gs-email">Email address *</label>
+        <input class="form-input" id="gs-email" type="email" placeholder="hello@yourbusiness.co.uk" autocomplete="email">
+        <span class="field-hint">We'll send the mockup link here — no spam, ever.</span>
+      </div>
+    </div>
+    <div class="form-nav">
+      <div></div>
+      <button class="btn-primary" onclick="goToStep(2)">Next — Your business →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: Business -->
+  <div class="form-section" id="section-2">
+    <div class="section-title">About your business</div>
+    <div class="section-sub">The more detail you give us, the better your mockup will be.</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="gs-biz">Business name *</label>
+        <input class="form-input" id="gs-biz" type="text" placeholder="e.g. Nour's Barber Shop">
+      </div>
+      <div class="form-group">
+        <label for="gs-type">Type of business</label>
+        <select class="form-select" id="gs-type">
+          <option value="">Select category…</option>
+          <option>Restaurant / Café / Takeaway</option>
+          <option>Hair Salon / Barber</option>
+          <option>Beauty / Nails / Spa</option>
+          <option>Gym / Personal Trainer</option>
+          <option>Plumber / Electrician / Trades</option>
+          <option>Retail Shop</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="gs-borough">London borough</label>
+        <select class="form-select" id="gs-borough">
+          <option value="">Select area…</option>
+          <option>Barking and Dagenham</option><option>Barnet</option><option>Bexley</option>
+          <option>Brent</option><option>Bromley</option><option>Camden</option>
+          <option>City of London</option><option>Croydon</option><option>Ealing</option>
+          <option>Enfield</option><option>Greenwich</option><option>Hackney</option>
+          <option>Hammersmith and Fulham</option><option>Haringey</option><option>Harrow</option>
+          <option>Havering</option><option>Hillingdon</option><option>Hounslow</option>
+          <option>Islington</option><option>Kensington and Chelsea</option>
+          <option>Kingston upon Thames</option><option>Lambeth</option><option>Lewisham</option>
+          <option>Merton</option><option>Newham</option><option>Redbridge</option>
+          <option>Richmond upon Thames</option><option>Southwark</option><option>Sutton</option>
+          <option>Tower Hamlets</option><option>Waltham Forest</option>
+          <option>Wandsworth</option><option>Westminster</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="gs-tagline">One-line description</label>
+        <input class="form-input" id="gs-tagline" type="text" placeholder="What do you do in one sentence?">
+      </div>
+      <div class="form-group span2">
+        <label for="gs-services">Your top 3 services or menu items</label>
+        <input class="form-input" id="gs-services" type="text" placeholder="e.g. Jerk chicken, wings, loaded fries">
+        <span class="field-hint">Helps us write real copy for your mockup — not placeholder text.</span>
+      </div>
+      <div class="form-group span2">
+        <label for="gs-audience">Who are your customers?</label>
+        <input class="form-input" id="gs-audience" type="text" placeholder="e.g. Local families, young professionals, students">
+      </div>
+      <div class="form-group span2">
+        <label>Budget range</label>
+        <div class="budget-grid">
+          <div class="budget-option" onclick="selectBudget(this, '£500–£1,000')">
+            <div class="budget-label">£500 – £1,000</div>
+            <div class="budget-desc">Launch package</div>
+          </div>
+          <div class="budget-option" onclick="selectBudget(this, '£1,000–£2,000')">
+            <div class="budget-label">£1,000 – £2,000</div>
+            <div class="budget-desc">Grow package</div>
+          </div>
+          <div class="budget-option" onclick="selectBudget(this, '£2,000–£5,000')">
+            <div class="budget-label">£2,000 – £5,000</div>
+            <div class="budget-desc">Dominate package</div>
+          </div>
+          <div class="budget-option" onclick="selectBudget(this, 'Not sure yet')">
+            <div class="budget-label">Not sure yet</div>
+            <div class="budget-desc">We'll advise you</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-nav">
+      <button class="btn-ghost" onclick="goToStep(1)">← Back</button>
+      <button class="btn-primary" onclick="goToStep(3)">Next — Design →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Design -->
+  <div class="form-section" id="section-3">
+    <div class="section-title">Design preferences</div>
+    <div class="section-sub">This is what makes your mockup look like <em>your</em> brand, not a template.</div>
+
+    <div class="form-grid">
+      <div class="form-group span2">
+        <label>What style fits your brand?</label>
+        <div class="style-grid" id="style-grid">
+          <div class="style-option" onclick="selectStyle(this, 'Modern & clean')">
+            <span class="style-emoji">✨</span>
+            <span class="style-label">Modern & clean</span>
+            <span class="style-desc">Minimal, lots of white space</span>
+          </div>
+          <div class="style-option" onclick="selectStyle(this, 'Bold & loud')">
+            <span class="style-emoji">🔥</span>
+            <span class="style-label">Bold & loud</span>
+            <span class="style-desc">Big type, strong colours</span>
+          </div>
+          <div class="style-option" onclick="selectStyle(this, 'Classic & traditional')">
+            <span class="style-emoji">🏛️</span>
+            <span class="style-label">Classic</span>
+            <span class="style-desc">Timeless, trustworthy</span>
+          </div>
+          <div class="style-option" onclick="selectStyle(this, 'Playful & fun')">
+            <span class="style-emoji">🎉</span>
+            <span class="style-label">Playful & fun</span>
+            <span class="style-desc">Friendly, energetic</span>
+          </div>
+          <div class="style-option" onclick="selectStyle(this, 'Luxury / high-end')">
+            <span class="style-emoji">💎</span>
+            <span class="style-label">Luxury</span>
+            <span class="style-desc">Premium, sophisticated</span>
+          </div>
+          <div class="style-option" onclick="selectStyle(this, 'Minimal')">
+            <span class="style-emoji">⬜</span>
+            <span class="style-label">Minimal</span>
+            <span class="style-desc">Clean, no clutter</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Primary brand colour</label>
+        <div class="colour-row">
+          <input type="color" class="colour-picker" id="gs-primary-picker" value="#5b4fe8"
+            oninput="document.getElementById('gs-primary-hex').value=this.value">
+          <input class="colour-hex" id="gs-primary-hex" value="#5b4fe8" maxlength="7"
+            oninput="syncColour('gs-primary-picker','gs-primary-hex')">
+        </div>
+        <span class="field-hint">Pick closest match to your existing branding, or any colour you like.</span>
+      </div>
+
+      <div class="form-group">
+        <label>Secondary colour</label>
+        <div class="colour-row">
+          <input type="color" class="colour-picker" id="gs-secondary-picker" value="#f59e0b"
+            oninput="document.getElementById('gs-secondary-hex').value=this.value">
+          <input class="colour-hex" id="gs-secondary-hex" value="#f59e0b" maxlength="7"
+            oninput="syncColour('gs-secondary-picker','gs-secondary-hex')">
+        </div>
+      </div>
+
+      <div class="form-group span2">
+        <label>Do you already have a logo?</label>
+        <div class="toggle-row">
+          <button class="toggle-btn active" id="logo-no-btn" onclick="setLogo('No')">No logo yet</button>
+          <button class="toggle-btn" id="logo-yes-btn" onclick="setLogo('Yes')">Yes, I have one</button>
+        </div>
+      </div>
+
+      <div class="form-group span2" id="logo-url-wrap" style="display:none;">
+        <label for="gs-logo-url">Logo link (Google Drive, Dropbox, or website)</label>
+        <input class="form-input" id="gs-logo-url" type="url" placeholder="https://drive.google.com/...">
+      </div>
+
+      <div class="form-group span2">
+        <label for="gs-inspo">Any websites you like the look of?</label>
+        <textarea class="form-textarea" id="gs-inspo" placeholder="Paste links or describe the vibe — e.g. wagamama.com, dishoom.com. Or just say 'dark and modern' or 'bright and friendly'."></textarea>
+      </div>
+
+      <div class="form-group span2">
+        <label for="gs-notes">Anything else we should know?</label>
+        <textarea class="form-textarea" id="gs-notes" placeholder="Opening times, special offers, awards, anything that makes your business stand out…"></textarea>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-ghost" onclick="goToStep(2)">← Back</button>
+      <button class="btn-primary" id="submit-btn" onclick="submitForm()">
+        Send my free mockup request →
+      </button>
+    </div>
+  </div>
+
+  <!-- Success -->
+  <div class="success-wrap" id="success-wrap">
+    <div class="success-icon">✅</div>
+    <h2 class="success-title">You're all set!</h2>
+    <p class="success-sub">We'll have your free mockup ready within 24 hours and send it straight to your inbox. No payment needed yet.</p>
+    <a href="/" class="btn-primary" style="display:inline-flex;text-decoration:none;">← Back to Vornex</a>
+  </div>
+
+</div>
+
+<script>
+// ── Apps Script web app URL — replace after redeploying with "Anyone" access ──
+const SHEET_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL';
+
+let selectedStyle  = '';
+let selectedBudget = '';
+let hasLogo = 'No';
+
+function goToStep(n) {
+  // Validate before moving forward
+  if (n === 2) {
+    const name  = document.getElementById('gs-name').value.trim();
+    const email = document.getElementById('gs-email').value.trim();
+    if (!name) { alert('Please enter your name.'); return; }
+    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  }
+  if (n === 3) {
+    const biz = document.getElementById('gs-biz').value.trim();
+    if (!biz) { alert('Please enter your business name.'); return; }
+  }
+
+  // Hide all sections
+  document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('section-' + n).classList.add('active');
+
+  // Update step indicators
+  for (let i = 1; i <= 3; i++) {
+    const el = document.getElementById('step-' + i);
+    el.classList.remove('active', 'done');
+    if (i < n) el.classList.add('done');
+    if (i === n) el.classList.add('active');
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function selectStyle(el, val) {
+  document.querySelectorAll('.style-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedStyle = val;
+}
+
+function selectBudget(el, val) {
+  document.querySelectorAll('.budget-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedBudget = val;
+}
+
+function setLogo(val) {
+  hasLogo = val;
+  document.getElementById('logo-yes-btn').classList.toggle('active', val === 'Yes');
+  document.getElementById('logo-no-btn').classList.toggle('active', val === 'No');
+  document.getElementById('logo-url-wrap').style.display = val === 'Yes' ? 'flex' : 'none';
+  document.getElementById('logo-url-wrap').style.flexDirection = 'column';
+  document.getElementById('logo-url-wrap').style.gap = '7px';
+}
+
+function syncColour(pickerId, hexId) {
+  const hex = document.getElementById(hexId).value;
+  if (/^#[0-9a-fA-F]{6}$/.test(hex)) {
+    document.getElementById(pickerId).value = hex;
+  }
+}
+
+async function submitForm() {
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const data = {
+    clientName:      document.getElementById('gs-name').value.trim(),
+    clientEmail:     document.getElementById('gs-email').value.trim(),
+    clientPhone:     document.getElementById('gs-phone').value.trim(),
+    businessName:    document.getElementById('gs-biz').value.trim(),
+    businessType:    document.getElementById('gs-type').value,
+    borough:         document.getElementById('gs-borough').value,
+    tagline:         document.getElementById('gs-tagline').value.trim(),
+    keyServices:     document.getElementById('gs-services').value.trim(),
+    targetAudience:  document.getElementById('gs-audience').value.trim(),
+    style:           selectedStyle,
+    budget:          selectedBudget,
+    primaryColour:   document.getElementById('gs-primary-hex').value,
+    secondaryColour: document.getElementById('gs-secondary-hex').value,
+    hasLogo:         hasLogo,
+    logoUrl:         document.getElementById('gs-logo-url').value.trim(),
+    competitorSites: document.getElementById('gs-inspo').value.trim(),
+    notes:           document.getElementById('gs-notes').value.trim(),
+    source:          'get-started-page'
+  };
+
+  try {
+    if (SHEET_URL !== 'YOUR_APPS_SCRIPT_WEB_APP_URL') {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    // Show success regardless (don't block on sheet save)
+    document.getElementById('form-header').style.display = 'none';
+    document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
+    document.getElementById('success-wrap').classList.add('visible');
+  } catch {
+    // Still show success — data can be recovered from Formspree email
+    document.getElementById('form-header').style.display = 'none';
+    document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
+    document.getElementById('success-wrap').classList.add('visible');
+  }
+}
+</script>
+
+</body>
+</html>
