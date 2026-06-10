@@ -3,14 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YX1DC8S4WP"></script>
+<!-- Google Analytics (GA4) with Consent Mode v2 -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
+  if (localStorage.getItem('vornex-consent') === 'granted') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
   gtag('js', new Date());
   gtag('config', 'G-YX1DC8S4WP');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YX1DC8S4WP"></script>
 <title>Get Started — Vornex Web Design London</title>
 <meta name="description" content="Tell us about your business and we'll build you a free mockup within 24 hours. No cost, no commitment.">
 <meta name="robots" content="noindex">
@@ -832,5 +841,29 @@ async function submitForm() {
 }
 </script>
 
+<!-- Cookie consent banner (UK PECR) -->
+<div id="cookie-banner" hidden style="position:fixed;left:16px;right:16px;bottom:16px;z-index:5000;max-width:480px;margin:0 auto;background:#13131f;border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 20px;box-shadow:0 12px 40px rgba(0,0,0,0.5);font-size:14px;line-height:1.5;color:#f0f0f8;">
+  <p style="margin:0 0 12px;">We use cookies for anonymous analytics to understand how visitors use this site. <a href="/privacy.html" style="color:#9b8fff;">Privacy policy</a></p>
+  <div style="display:flex;gap:10px;">
+    <button id="cc-accept" style="flex:1;background:#5b4fe8;color:#fff;border:none;border-radius:8px;padding:10px 16px;font-weight:600;cursor:pointer;font-size:14px;">Accept</button>
+    <button id="cc-decline" style="flex:1;background:none;color:#9b9cc0;border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 16px;font-weight:600;cursor:pointer;font-size:14px;">Decline</button>
+  </div>
+</div>
+<script>
+(function(){
+  if (localStorage.getItem('vornex-consent')) return;
+  var b = document.getElementById('cookie-banner');
+  b.hidden = false;
+  document.getElementById('cc-accept').onclick = function(){
+    localStorage.setItem('vornex-consent','granted');
+    gtag('consent','update',{analytics_storage:'granted'});
+    b.hidden = true;
+  };
+  document.getElementById('cc-decline').onclick = function(){
+    localStorage.setItem('vornex-consent','denied');
+    b.hidden = true;
+  };
+})();
+</script>
 </body>
 </html>

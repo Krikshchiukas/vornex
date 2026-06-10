@@ -3,14 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YX1DC8S4WP"></script>
+<!-- Google Analytics (GA4) with Consent Mode v2 -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
+  if (localStorage.getItem('vornex-consent') === 'granted') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
   gtag('js', new Date());
   gtag('config', 'G-YX1DC8S4WP');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YX1DC8S4WP"></script>
 <title>Privacy Policy | Vornex Web Design London</title>
 <meta name="description" content="Privacy Policy for Vornex Web Design. How we collect, use and protect your personal data.">
 <meta name="robots" content="noindex, follow">
@@ -105,10 +114,10 @@
 
 <main>
   <h1>Privacy Policy</h1>
-  <p class="last-updated">Last updated: 8 June 2026</p>
+  <p class="last-updated">Last updated: 10 June 2026</p>
 
   <h2>1. Who we are</h2>
-  <p>Vornex Web Design ("Vornex", "we", "us") provides web design and digital services to small businesses in London and the UK. Our website is <a href="https://vornex.co.uk">vornex.co.uk</a>. You can contact us at <a href="mailto:hello@vornex.co.uk">hello@vornex.co.uk</a> or 07926 966918.</p>
+  <p>Vornex Web Design ("Vornex", "we", "us") is the trading name of Viacheslav Krikshchiukas, a sole trader based in London, UK. We provide web design and digital services to small businesses in London and the UK. Our website is <a href="https://vornex.co.uk">vornex.co.uk</a>. You can contact us at <a href="mailto:hello@vornex.co.uk">hello@vornex.co.uk</a> or 07926 966918.</p>
 
   <h2>2. What data we collect</h2>
   <p>We collect personal data only when you voluntarily provide it:</p>
@@ -147,7 +156,13 @@
   </ul>
 
   <h2>7. Cookies</h2>
-  <p>Our website may use cookies for analytics purposes. By using our site, you consent to our use of cookies. You can disable cookies in your browser settings at any time.</p>
+  <p>We use Google Analytics cookies to understand how visitors use our site (pages visited, time on site, device type). These cookies are <strong>not set unless you click "Accept"</strong> on the cookie banner shown on your first visit. If you click "Decline", no analytics cookies are placed.</p>
+  <p>To change your choice later, clear this site's data in your browser settings (the banner will appear again on your next visit). You can also block cookies entirely in your browser.</p>
+  <table style="width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;">
+    <tr style="text-align:left;"><th style="padding:6px 8px;border-bottom:1px solid rgba(255,255,255,0.15);">Cookie</th><th style="padding:6px 8px;border-bottom:1px solid rgba(255,255,255,0.15);">Provider</th><th style="padding:6px 8px;border-bottom:1px solid rgba(255,255,255,0.15);">Purpose</th><th style="padding:6px 8px;border-bottom:1px solid rgba(255,255,255,0.15);">Expiry</th></tr>
+    <tr><td style="padding:6px 8px;">_ga</td><td style="padding:6px 8px;">Google Analytics</td><td style="padding:6px 8px;">Distinguishes visitors (anonymous ID)</td><td style="padding:6px 8px;">2 years</td></tr>
+    <tr><td style="padding:6px 8px;">_ga_*</td><td style="padding:6px 8px;">Google Analytics</td><td style="padding:6px 8px;">Maintains session state</td><td style="padding:6px 8px;">2 years</td></tr>
+  </table>
 
   <h2>8. Your rights</h2>
   <p>Under UK GDPR you have the right to:</p>
@@ -167,5 +182,29 @@
   <p>For any privacy-related questions: <a href="mailto:hello@vornex.co.uk">hello@vornex.co.uk</a> · 07926 966918</p>
 </main>
 
+<!-- Cookie consent banner (UK PECR) -->
+<div id="cookie-banner" hidden style="position:fixed;left:16px;right:16px;bottom:16px;z-index:5000;max-width:480px;margin:0 auto;background:#13131f;border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 20px;box-shadow:0 12px 40px rgba(0,0,0,0.5);font-size:14px;line-height:1.5;color:#f0f0f8;">
+  <p style="margin:0 0 12px;">We use cookies for anonymous analytics to understand how visitors use this site. <a href="/privacy.html" style="color:#9b8fff;">Privacy policy</a></p>
+  <div style="display:flex;gap:10px;">
+    <button id="cc-accept" style="flex:1;background:#5b4fe8;color:#fff;border:none;border-radius:8px;padding:10px 16px;font-weight:600;cursor:pointer;font-size:14px;">Accept</button>
+    <button id="cc-decline" style="flex:1;background:none;color:#9b9cc0;border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 16px;font-weight:600;cursor:pointer;font-size:14px;">Decline</button>
+  </div>
+</div>
+<script>
+(function(){
+  if (localStorage.getItem('vornex-consent')) return;
+  var b = document.getElementById('cookie-banner');
+  b.hidden = false;
+  document.getElementById('cc-accept').onclick = function(){
+    localStorage.setItem('vornex-consent','granted');
+    gtag('consent','update',{analytics_storage:'granted'});
+    b.hidden = true;
+  };
+  document.getElementById('cc-decline').onclick = function(){
+    localStorage.setItem('vornex-consent','denied');
+    b.hidden = true;
+  };
+})();
+</script>
 </body>
 </html>
